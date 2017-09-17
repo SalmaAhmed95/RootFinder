@@ -1,0 +1,350 @@
+function varargout = gui(varargin)
+
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+    'gui_Singleton',  gui_Singleton, ...
+    'gui_OpeningFcn', @gui_OpeningFcn, ...
+    'gui_OutputFcn',  @gui_OutputFcn, ...
+    'gui_LayoutFcn',  [] , ...
+    'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+
+% --- Executes just before gui is made visible.
+function gui_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to gui (see VARARGIN)
+
+% handles.tgroup = uitabgroup('Parent', handles.figure1,'Position', [0.13 0.11 0.4 0.56]);
+handles.tgroup = uitabgroup('Parent', handles.figure1, 'Units', 'pixels', 'Position', [335 150 430 365]);
+handles.tab1 = uitab('Parent', handles.tgroup, 'Title', 'Function');
+handles.tab2 = uitab('Parent', handles.tgroup, 'Title', 'Iterations');
+handles.tab3 = uitab('Parent', handles.tgroup, 'Title', 'Bound');
+
+handles.ax1 = axes('Parent',handles.tab1,'Position',[0.07 0.11 0.9 0.8],'Box','on');
+handles.ax2 = axes('Parent',handles.tab2,'Position',[0.07 0.11 0.9 0.8],'Box','on');
+handles.ax3 = axes('Parent',handles.tab3,'Position',[0.07 0.11 0.9 0.8],'Box','on');
+%Choose default command line output for gui
+handles.output = hObject;
+handles.toutput = uitabgroup('Parent', handles.figure1, 'Units', 'pixels', 'Position', [820 150  440 365]);
+handles.tout1 = uitab('Parent', handles.toutput, 'Title', 'Single Method');
+handles.tout2 = uitab('Parent', handles.toutput, 'Title', 'All Method');
+handles.outputable = uitable('Parent',handles.tout1);
+handles.outputable2 = uitable('Parent',handles.tout2);
+
+set(handles.outputable,'Parent',handles.tout1);
+% Update handles structure
+guidata(hObject, handles);
+
+
+% --- Outputs from this function are returned to the command line.
+function varargout = gui_OutputFcn(hObject, eventdata, handles)
+varargout{1} = handles.output;
+
+% ----------------------------------------------------------------------------------
+% Creation Functions: Executed during object creation, after setting all properties.
+% ----------------------------------------------------------------------------------
+
+function filename_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function equation_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function maxIterations_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function precision_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function methodList_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function bisectionPoints_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function falsePoints_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function fixedPoints_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function newtonPoints_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function secantPoints_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function biergePoints_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+% -------------------
+% Callback Functions:
+% -------------------
+
+function filename_Callback(hObject, eventdata, handles)
+
+function equation_Callback(hObject, eventdata, handles)
+% Hints: get(hObject,'String') returns contents of equation as text
+%        str2double(get(hObject,'String')) returns contents of equation as a double
+
+function maxIterations_Callback(hObject, eventdata, handles)
+
+function precision_Callback(hObject, eventdata, handles)
+
+% --- Executes on selection change in methodList.
+function methodList_Callback(hObject, eventdata, handles)
+% Hints: contents = cellstr(get(hObject,'String')) returns methodList contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from methodList
+
+function bisectionPoints_Callback(hObject, eventdata, handles)
+
+function falsePoints_Callback(hObject, eventdata, handles)
+
+function fixedPoints_Callback(hObject, eventdata, handles)
+
+function secantPoints_Callback(hObject, eventdata, handles)
+
+function newtonPoints_Callback(hObject, eventdata, handles)
+
+function biergePoints_Callback(hObject, eventdata, handles)
+
+% --- Executes on button press in solve.
+function solve_Callback(hObject, eventdata, handles)
+cla(handles.ax1);
+cla(handles.ax2);
+cla(handles.ax3);
+try
+methods = cellstr(get(handles.methodList,'String')); % cell array containing all methods in the list
+selected = methods{get(handles.methodList,'Value')}; % selected method
+eq = get(handles.equation,'String'); % input equation as (string)
+vars = cell2mat(symvar(eq)); % array of variables(strings) -> converted from (cell array)
+var = sym(vars(1, 1)); % x, y, t, etc... -> as eq is in terms of one variable
+fn = matlabFunction(symfun(sym(eq), var)); % equation as (function_handle)
+iMax = str2double(get(handles.maxIterations,'String')); % max #iterations
+Es = str2double(get(handles.precision,'String')); % desired precision
+catch 
+    errordlg('invalid input')
+end
+if (isnan(iMax))
+    iMax = 50; % default maximum iterations
+end
+if (isnan(Es))
+    Es = 0.00001; % default EPSILON
+end
+
+switch selected
+    case 'Bisection'
+        try
+        points = double(sym(strsplit(get(handles.bisectionPoints,'String')))); % cell array containing xL, xU
+       catch
+            errordlg('invalid initial points')
+        end
+        colNames = {'xR';'xL';'xU';'absErr'};
+        set(handles.outputable,'ColumnName',colNames);
+        [A ,B, C] = bisection(handles,min(points), max(points), fn, iMax, Es);
+    case 'False Position'
+        try
+        points = double(sym(strsplit(get(handles.falsePoints,'String')))); % cell array containing xL, xU
+        catch
+            errordlg('invalid initial points')
+        end
+        colNames = {'xR';'xL';'xU';'f(x)';'absErr'};
+        set(handles.outputable,'ColumnName',colNames);
+        [A ,B, C] = FalsePosition(handles,min(points), max(points), fn, iMax, Es);
+    case 'Fixed Point'
+        try
+        points = double(sym(strsplit(get(handles.fixedPoints,'String')))); % cell array containing x0
+        catch
+            errordlg('invalid initial points')
+        end
+        colNames = {'xR';'absErr'};
+        set(handles.outputable,'ColumnName',colNames);
+        [A ,B, C,D,E] = FixedPoint(handles, min(points), fn, var, iMax, Es);
+    case 'Newton'
+        try
+        points = double(sym(strsplit(get(handles.newtonPoints,'String')))); % cell array containing x0
+        catch
+            errordlg('invalid initial points')
+        end
+        colNames = {'xR';'absErr'};
+         set(handles.outputable,'ColumnName',colNames);
+        [A ,B,C] = NewtonRaphson(handles,min(points), fn,var,iMax, Es);
+    case 'Secant'
+        try
+        points = double(sym(strsplit(get(handles.secantPoints,'String')))); % cell array containing x_1, x0
+        catch
+            errordlg('invalid initial points')
+        end
+        colNames = {'xR';'absErr'};
+        set(handles.outputable,'ColumnName',colNames);
+        [A, B, C] = Secant(handles,min(points), max(points), fn, iMax, Es);
+    case 'Bierge Vieta'  
+        try
+        coffA = sym2poly(sym(eq));
+        points = double(sym(strsplit(get(handles.biergePoints,'String'))));
+        catch
+            errordlg('invalid initial points')
+        end
+        colNames = {'xR';'bL';'cL';'absErr'};
+        set(handles.outputable,'ColumnName',colNames);
+        [A, B, C] = BirgeVieta(handles,min(points), coffA, fn, iMax, Es);
+    case 'General'
+        [p1,p2] =initialGuess(fn);
+        colNames = {'xR';'absErr'};
+        set(handles.outputable,colNames);
+        [A, B, C] = generalMethod(p1,p2, fn, iMax, Es);
+    case 'All'
+        try
+        points1 = double(sym(strsplit(get(handles.bisectionPoints,'String'))))
+         [A1 ,B1, C1] = bisection(handles,min(points1), max(points1), fn, iMax, Es);
+        points2 = double(sym(strsplit(get(handles.falsePoints,'String')))); 
+        [A2 ,B2, C2] = FalsePosition(handles,min(points2), max(points2), fn, iMax, Es);
+        points3 = double(sym(strsplit(get(handles.fixedPoints,'String')))); % cell array containing x0
+        [A3 ,B3, C3,D3,E3] = FixedPoint(handles, min(points3), fn, var, iMax, Es);
+        points4 = double(sym(strsplit(get(handles.newtonPoints,'String'))));
+        [A4 ,B4,C4] = NewtonRaphson(handles,min(points4), fn,var,iMax, Es);
+        points5 = double(sym(strsplit(get(handles.secantPoints,'String'))));
+        [A5, B5, C5] = Secant(handles,min(points5), max(points5), fn, iMax, Es);
+        coffA = sym2poly(sym(eq));
+        points6 = double(sym(strsplit(get(handles.biergePoints,'String'))));
+        set(handles.outputable,'ColumnName',{'xR';'absErr'});
+        [A6, B6, C6] = BirgeVieta(handles,min(points6), coffA, fn, iMax, Es);
+        [p1,p2] =initialGuess(fn);
+        set(handles.outputable,'ColumnName',{'xR';'absErr'});
+        [A7, B7, C7] = generalMethod(p1,p2, fn, iMax, Es);
+        catch
+            errordlg('invalid initial point')
+        end
+end
+
+if(strcmp(selected,'All')==0)
+    
+set(handles.timetxtDis,'String',num2str(A));
+set(handles.textroot,'String',num2str(B(end,2)));
+set(handles.outputable,'Data',B(:, 2:end));
+set(handles.textPresDis,'String',strcat(num2str(B(end,end))));
+set(handles.bound,'String',num2str(C));
+% plotting iterations versus roots and curves
+axes(handles.ax2)
+stem(B(:,1),B(:,2))
+axes(handles.ax3)
+stem(B(:,1),B(:,end))
+%writing to file
+writeOutput('results.txt',colNames,B(:,(2:end)),A,C);
+else
+    
+  cla(handles.ax1);
+  cla(handles.ax2);
+  cla(handles.ax3);
+  colNames = {'realRoot';'Error';'No of Iterations';'excutionTime'};
+  set(handles.outputable2,'ColumnName',colNames);
+  set(handles.outputable2,'RowName',{'Bisection';'falsePosition';'Fixed';'Newton';'Secant';'BirgeVieta';'generalMethod'});
+  Data2 = zeros(7,4);
+  Data2(1,1)= B1(end,2); Data2(1,2)=B1(end,end);Data2(1,3)=B1(end,1);Data2(1,4)=(A1);
+  Data2(2,1)= B2(end,2); Data2(2,2)=B2(end,end);Data2(2,3)=B2(end,1);Data2(2,4)=(A2);
+  Data2(3,1)= B3(end,2); Data2(3,2)=B3(end,end);Data2(3,3)=B3(end,1);Data2(3,4)=(A3);
+  Data2(4,1)= B4(end,2); Data2(4,2)=B4(end,end);Data2(4,3)=B4(end,1);Data2(4,4)=(A4);
+  Data2(5,1)= B5(end,2); Data2(5,2)=B5(end,end);Data2(5,3)=B5(end,1);Data2(5,4)=(A5);
+  Data2(6,1)= B6(end,2); Data2(6,2)=B6(end,end);Data2(6,3)=B6(end,1);Data2(6,4)=(A6);
+  Data2(7,1)= B7(end,2); Data2(7,2)=B7(end,end);Data2(7,3)=B7(end,1);Data2(7,4)=(A7);
+  set(handles.outputable2,'Data',Data2);
+  % writing to file
+  writeOutput('results.txt',colNames,Data2,NaN,NaN);
+  %plotting iterations Vs Roots
+  axes(handles.ax2);
+  hold on
+  plot(B1(:,1),B1(:,2),'DisplayName','Bisection','color','red');
+  plot(B2(:,1),B2(:,2),'DisplayName','FalsePosition','color','yellow');
+  plot(B3(:,1),B3(:,2),'DisplayName','FixedPoint','color','green');
+  plot(B4(:,1),B4(:,2),'DisplayName','Newton','color','black');
+  plot(B5(:,1),B5(:,2),'DisplayName','Secant','color','blue');
+  plot(B6(:,1),B6(:,2),'DisplayName','Bierge Vieta','color','cyan');
+  plot(B7(:,1),B7(:,2),'DisplayName','General','color','magenta');
+  grid on
+  legend('show')
+   %plotting iterations Vs Errors
+  axes(handles.ax3)
+  hold on 
+  plot(B1(:,1),B1(:,end),'DisplayName','Bisection','color','red');
+  plot(B2(:,1),B2(:,end),'DisplayName','FalsePosition','color','yellow');
+  plot(B3(:,1),B3(:,end),'DisplayName','FixedPoint','color','green');
+  plot(B4(:,1),B4(:,end),'DisplayName','Newton','color','black');
+  plot(B5(:,1),B5(:,end),'DisplayName','Secant','color','blue');
+  plot(B6(:,1),B6(:,end),'DisplayName','Bierge Vieta','color','cyan');
+  plot(B7(:,1),B7(:,end),'DisplayName','General','color','magenta');
+  legend('show')
+  grid on;
+end;    
+
+guidata(hObject,handles);
+
+function readFile_Callback(hObject, eventdata, handles)
+fileName = get(handles.filename,'String');
+[lowerBound,upperBound,polynomial,maxIterations,error]=readParameters(fileName);
+space=' ';
+stringPoints = '';
+stringPoints = sprintf('%s%s%s', stringPoints, char(lowerBound),space, char(upperBound));
+set(handles.bisectionPoints,'Max',2);
+set(handles.bisectionPoints,'String',stringPoints);
+set(handles.equation,'String',polynomial);
+set(handles.maxIterations,'String',maxIterations);
+set(handles.precision,'String',error);
+guidata(hObject,handles);
+
+function clearBtn_Callback(hObject, eventdata, handles)
+
+
+
+
+function clearBoxes()
+set(handles.equation,'String',' ');
+set(handles.timetxtDis,'String',' ');
+set(handles.textroot,'String',' ');
+set(handles.bound,'String',' ');
+set(handles.textPresDis,'String',' ');
+set(handles.bisectionPoints,'String',' ');
+set(handles.newtonPoints,'String',' ');
+set(handles.falsePoints,'String',' ');
+set(handles.secantPoints,'String',' ');
+set(handles.fixedPoints,'String',' ');
+set(handles.biergePoints,'String',' ');
+set(handles.filename,'String',' ');
+
+
+
+

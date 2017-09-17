@@ -1,0 +1,1 @@
+lowerBound 12 upperBound 20 polynomial x^2-5==0 maxIterations 30 error 0.0001
